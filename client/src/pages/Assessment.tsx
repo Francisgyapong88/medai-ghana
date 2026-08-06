@@ -26,7 +26,7 @@ const symptomGroups = {
   'Other Symptoms': ['Joint Pain'],
 }
 
-const API_URL = "https://medai-ghana-backend.onrender.com//api"
+const API_URL = "https://medai-ghana-backend.onrender.com/api"
 
 export default function Assessment({ onNavigate }: AssessmentProps) {
   const [patients, setPatients] = useState<Patient[]>([])

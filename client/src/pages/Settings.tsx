@@ -47,7 +47,7 @@ export default function Settings({ onNavigate }: SettingsProps) {
 
     const token = localStorage.getItem('medai_token')
 
-    axios.get('https://medai-ghana-backend.onrender.com//api/auth/me', { headers: { Authorization: `Bearer ${token}` } })
+    axios.get('https://medai-ghana-backend.onrender.com/api/auth/me', { headers: { Authorization: `Bearer ${token}` } })
       .then(res => setProfile(res.data.user))
       .catch(err => console.error('Failed to load account info:', err))
       .finally(() => setLoading(false))

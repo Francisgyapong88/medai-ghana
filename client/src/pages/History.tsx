@@ -48,7 +48,7 @@ export default function History({ onNavigate }: HistoryProps) {
 
   useEffect(() => {
 
-    axios.get('https://medai-ghana-backend.onrender.com//api/history', { headers })
+    axios.get('https://medai-ghana-backend.onrender.com/api/history', { headers })
       .then(res => {
         setEntries(res.data.data)
         setConnectionError(false)
@@ -78,7 +78,7 @@ export default function History({ onNavigate }: HistoryProps) {
 
     try {
 
-      const res = await axios.get(`https://medai-ghana-backend.onrender.com//api/history/${assessmentId}`, { headers })
+      const res = await axios.get(`https://medai-ghana-backend.onrender.com/api/history/${assessmentId}`, { headers })
 
       onNavigate('prediction', res.data.data)
 

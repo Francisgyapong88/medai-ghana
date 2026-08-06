@@ -87,10 +87,10 @@ export default function Analytics({ onNavigate }: AnalyticsProps) {
     const headers = { Authorization: `Bearer ${token}` }
 
     Promise.all([
-      axios.get('https://medai-ghana-backend.onrender.com//api/dashboard/counts', { headers }),
-      axios.get('https://medai-ghana-backend.onrender.com//api/dashboard/disease-distribution', { headers }),
-      axios.get('https://medai-ghana-backend.onrender.com//api/dashboard/weekly-trend', { headers }),
-      axios.get('https://medai-ghana-backend.onrender.com//api/analytics/symptom-frequency', { headers }),
+      axios.get('https://medai-ghana-backend.onrender.com/api/dashboard/counts', { headers }),
+      axios.get('https://medai-ghana-backend.onrender.com/api/dashboard/disease-distribution', { headers }),
+      axios.get('https://medai-ghana-backend.onrender.com/api/dashboard/weekly-trend', { headers }),
+      axios.get('https://medai-ghana-backend.onrender.com/api/analytics/symptom-frequency', { headers }),
     ])
       .then(([countsRes, distributionRes, trendRes, symptomsRes]) => {
 

@@ -53,7 +53,7 @@ export default function Profile({ onNavigate }: ProfileProps) {
   const headers = { Authorization: `Bearer ${token}` }
 
   const loadProfile = () => {
-    axios.get('https://medai-ghana-backend.onrender.com//api/auth/me', { headers })
+    axios.get('https://medai-ghana-backend.onrender.com/api/auth/me', { headers })
       .then(res => {
         setProfile(res.data.user)
         setFirstName(res.data.user.firstName)
@@ -80,7 +80,7 @@ export default function Profile({ onNavigate }: ProfileProps) {
     try {
 
       await axios.put(
-        'https://medai-ghana-backend.onrender.com//api/auth/me',
+        'https://medai-ghana-backend.onrender.com/api/auth/me',
         { firstName, lastName, phoneNumber: phoneNumber || null },
         { headers }
       )
@@ -126,7 +126,7 @@ export default function Profile({ onNavigate }: ProfileProps) {
     try {
 
       await axios.post(
-        'https://medai-ghana-backend.onrender.com//api/auth/change-password',
+        'https://medai-ghana-backend.onrender.com/api/auth/change-password',
         { currentPassword, newPassword },
         { headers }
       )

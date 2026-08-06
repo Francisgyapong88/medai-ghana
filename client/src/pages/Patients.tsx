@@ -123,7 +123,7 @@ export default function Patients({ onNavigate }: PatientsProps) {
 
   const loadPatients = () => {
     setLoading(true)
-    axios.get('https://medai-ghana-backend.onrender.com//api/patients', { headers })
+    axios.get('https://medai-ghana-backend.onrender.com/api/patients', { headers })
       .then(res => {
         setPatients(res.data.data)
         setConnectionError(false)
@@ -141,15 +141,15 @@ export default function Patients({ onNavigate }: PatientsProps) {
 
   const loadPatientDetails = (patientId: number) => {
 
-    axios.get('https://medai-ghana-backend.onrender.com//api/allergies/options', { headers })
+    axios.get('https://medai-ghana-backend.onrender.com/api/allergies/options', { headers })
       .then(res => setAllergyOptions(res.data.data))
       .catch(err => console.error('Failed to load allergy options:', err))
 
-    axios.get(`https://medai-ghana-backend.onrender.com//api/allergies/patient/${patientId}`, { headers })
+    axios.get(`https://medai-ghana-backend.onrender.com/api/allergies/patient/${patientId}`, { headers })
       .then(res => setPatientAllergies(res.data.data))
       .catch(err => console.error('Failed to load patient allergies:', err))
 
-    axios.get(`https://medai-ghana-backend.onrender.com//api/medical-history/patient/${patientId}`, { headers })
+    axios.get(`https://medai-ghana-backend.onrender.com/api/medical-history/patient/${patientId}`, { headers })
       .then(res => setMedicalHistory(res.data.data))
       .catch(err => console.error('Failed to load medical history:', err))
 
@@ -162,7 +162,7 @@ export default function Patients({ onNavigate }: PatientsProps) {
 
     try {
 
-      const res = await axios.get(`https://medai-ghana-backend.onrender.com//api/patients/${patient.patient_id}`, { headers })
+      const res = await axios.get(`https://medai-ghana-backend.onrender.com/api/patients/${patient.patient_id}`, { headers })
       const full = res.data.data
 
       setSelectedPatient({
@@ -192,7 +192,7 @@ export default function Patients({ onNavigate }: PatientsProps) {
 
     try {
 
-      const res = await axios.get(`https://medai-ghana-backend.onrender.com//api/patients/${patient.patient_id}`, { headers })
+      const res = await axios.get(`https://medai-ghana-backend.onrender.com/api/patients/${patient.patient_id}`, { headers })
       const full = res.data.data
 
       setEditForm({
@@ -231,7 +231,7 @@ export default function Patients({ onNavigate }: PatientsProps) {
     try {
 
       await axios.put(
-        `https://medai-ghana-backend.onrender.com//api/patients/${selectedPatient.patient_id}`,
+        `https://medai-ghana-backend.onrender.com/api/patients/${selectedPatient.patient_id}`,
         {
           first_name: editForm.first_name,
           last_name: editForm.last_name,
@@ -277,7 +277,7 @@ export default function Patients({ onNavigate }: PatientsProps) {
 
     try {
 
-      await axios.delete(`https://medai-ghana-backend.onrender.com//api/patients/${patient.patient_id}`, { headers })
+      await axios.delete(`https://medai-ghana-backend.onrender.com/api/patients/${patient.patient_id}`, { headers })
 
       loadPatients()
 
@@ -303,7 +303,7 @@ export default function Patients({ onNavigate }: PatientsProps) {
     try {
 
       await axios.post(
-        `https://medai-ghana-backend.onrender.com//api/allergies/patient/${selectedPatient.patient_id}`,
+        `https://medai-ghana-backend.onrender.com/api/allergies/patient/${selectedPatient.patient_id}`,
         {
           allergy_id: Number(newAllergyId),
           reaction: newAllergyReaction || null,
@@ -338,7 +338,7 @@ export default function Patients({ onNavigate }: PatientsProps) {
     try {
 
       await axios.post(
-        `https://medai-ghana-backend.onrender.com//api/medical-history/patient/${selectedPatient.patient_id}`,
+        `https://medai-ghana-backend.onrender.com/api/medical-history/patient/${selectedPatient.patient_id}`,
         {
           condition_name: newConditionName,
           status: newConditionStatus,
