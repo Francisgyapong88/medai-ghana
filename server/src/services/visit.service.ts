@@ -2,6 +2,26 @@ import pool from "../config/database";
 
 export class VisitService {
 
+    // Converts a JS Date, ISO string, or MySQL-style string into the
+    // exact "YYYY-MM-DD HH:MM:SS" format MySQL's strict mode requires.
+    // Local MariaDB was lenient about ISO format; Aiven's MySQL is not.
+    private static toMysqlDatetime(value: any): string {
+
+        const date = value ? new Date(value) : new Date();
+
+        const pad = (n: number) => String(n).padStart(2, "0");
+
+        return (
+            date.getFullYear() + "-" +
+            pad(date.getMonth() + 1) + "-" +
+            pad(date.getDate()) + " " +
+            pad(date.getHours()) + ":" +
+            pad(date.getMinutes()) + ":" +
+            pad(date.getSeconds())
+        );
+
+    }
+
     // =====================================================
     // Create Visit
     // =====================================================
@@ -35,7 +55,7 @@ export class VisitService {
             visit.visit_type_id,
             visit.visit_status_id,
             visit.attended_by ?? null,
-            visit.visit_date,
+            VisitService.toMysqlDatetime(visit.visit_date),
             visit.chief_complaint ?? null,
             visit.notes ?? null
 
