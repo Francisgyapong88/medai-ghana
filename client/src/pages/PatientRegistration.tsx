@@ -98,7 +98,7 @@ export default function PatientRegistration({ onNavigate }: PatientRegistrationP
 
       const token = localStorage.getItem('medai_token')
 
-      await axios.post('http://localhost:5000/api/patients', {
+      await axios.post('https://medai-ghana-backend.onrender.com//api/patients', {
         first_name: form.first_name,
         last_name: form.last_name,
         other_names: form.other_names || null,

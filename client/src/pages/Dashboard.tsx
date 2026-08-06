@@ -107,13 +107,13 @@ export default function Dashboard({ onNavigate }: DashboardProps) {
       try {
 
         const requests = [
-          axios.get('http://localhost:5000/api/dashboard/counts', { headers }),
-          axios.get('http://localhost:5000/api/dashboard/disease-distribution', { headers }),
-          axios.get('http://localhost:5000/api/dashboard/weekly-trend', { headers }),
+          axios.get('https://medai-ghana-backend.onrender.com//api/dashboard/counts', { headers }),
+          axios.get('https://medai-ghana-backend.onrender.com//api/dashboard/disease-distribution', { headers }),
+          axios.get('https://medai-ghana-backend.onrender.com//api/dashboard/weekly-trend', { headers }),
         ]
 
         if (userCanAccessClinical) {
-          requests.push(axios.get('http://localhost:5000/api/dashboard/recent-patients', { headers }))
+          requests.push(axios.get('https://medai-ghana-backend.onrender.com//api/dashboard/recent-patients', { headers }))
         }
 
         const [countsRes, distributionRes, trendRes, recentPatientsRes] = await Promise.all(requests)

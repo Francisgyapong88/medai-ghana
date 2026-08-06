@@ -94,7 +94,7 @@ export default function UserManagement({ onNavigate }: UserManagementProps) {
 
   const loadUsers = () => {
     setLoading(true)
-    axios.get('http://localhost:5000/api/users', { headers })
+    axios.get('https://medai-ghana-backend.onrender.com//api/users', { headers })
       .then(res => {
         setUsers(res.data.data)
         setConnectionError(false)
@@ -108,7 +108,7 @@ export default function UserManagement({ onNavigate }: UserManagementProps) {
 
   useEffect(() => {
     loadUsers()
-    axios.get('http://localhost:5000/api/facilities', { headers })
+    axios.get('https://medai-ghana-backend.onrender.com//api/facilities', { headers })
       .then(res => setFacilities(res.data.data ?? res.data))
       .catch(() => setFacilities([]))
   }, [])
@@ -155,7 +155,7 @@ export default function UserManagement({ onNavigate }: UserManagementProps) {
     try {
 
       await axios.post(
-        'http://localhost:5000/api/users',
+        'https://medai-ghana-backend.onrender.com//api/users',
         {
           first_name: firstName,
           last_name: lastName,
@@ -211,7 +211,7 @@ export default function UserManagement({ onNavigate }: UserManagementProps) {
     try {
 
       await axios.put(
-        `http://localhost:5000/api/users/${editingUser.user_id}`,
+        `https://medai-ghana-backend.onrender.com//api/users/${editingUser.user_id}`,
         {
           first_name: editFirstName,
           last_name: editLastName,
@@ -270,7 +270,7 @@ export default function UserManagement({ onNavigate }: UserManagementProps) {
     try {
 
       await axios.post(
-        `http://localhost:5000/api/users/${resettingUser.user_id}/reset-password`,
+        `https://medai-ghana-backend.onrender.com//api/users/${resettingUser.user_id}/reset-password`,
         { newPassword: resetPasswordValue },
         { headers }
       )
@@ -300,7 +300,7 @@ export default function UserManagement({ onNavigate }: UserManagementProps) {
     try {
 
       await axios.patch(
-        `http://localhost:5000/api/users/${u.user_id}/status`,
+        `https://medai-ghana-backend.onrender.com//api/users/${u.user_id}/status`,
         { isActive: !u.is_active },
         { headers }
       )
