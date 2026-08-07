@@ -3,35 +3,37 @@ import { body } from "express-validator";
 export const createVisitValidator = [
 
     body("patient_id")
-        .notEmpty()
-        .withMessage("Patient is required."),
+        .isInt()
+        .withMessage("A valid patient is required."),
 
     body("facility_id")
-        .notEmpty()
-        .withMessage("Facility is required."),
+        .isInt()
+        .withMessage("A valid facility is required."),
 
     body("department_id")
-        .notEmpty()
-        .withMessage("Department is required."),
+        .isInt()
+        .withMessage("A valid department is required."),
 
     body("visit_type_id")
-        .notEmpty()
-        .withMessage("Visit type is required."),
+        .isInt()
+        .withMessage("A valid visit type is required."),
 
     body("visit_status_id")
-        .notEmpty()
-        .withMessage("Visit status is required."),
-
-    body("attended_by")
-        .optional()
         .isInt()
-        .withMessage("Attended by must be a valid user."),
+        .withMessage("A valid visit status is required."),
 
     body("visit_date")
         .notEmpty()
         .withMessage("Visit date is required."),
 
     body("chief_complaint")
-        .notEmpty()
-        .withMessage("Chief complaint is required.")
+        .optional({ checkFalsy: true })
+        .isLength({ max: 1000 })
+        .withMessage("Chief complaint must be under 1000 characters."),
+
+    body("notes")
+        .optional({ checkFalsy: true })
+        .isLength({ max: 2000 })
+        .withMessage("Notes must be under 2000 characters."),
+
 ];
