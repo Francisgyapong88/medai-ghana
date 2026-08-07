@@ -2,6 +2,7 @@ import { Response } from "express";
 
 import { UserService } from "../services/user.service";
 import { AuthRequest } from "../middleware/authenticate";
+import { EMAIL_REGEX } from "../utils/emailValidator";
 
 export class UserController {
 
@@ -63,15 +64,13 @@ export class UserController {
 
             }
 
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (!emailPattern.test(email)) {
+            if (!EMAIL_REGEX.test(email)) {
 
                 return res.status(400).json({
 
                     success: false,
 
-                    message: "Please enter a valid email address."
+                    message: "Please enter a valid email address (e.g. name@example.com)."
 
                 });
 
